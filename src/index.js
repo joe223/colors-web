@@ -36,6 +36,10 @@ export const colors = () => {
       this.styles.push(`color:${color};`);
       return this;
     },
+    bg(color) {
+      this.styles.push(`background:${color};`);
+      return this;
+    },
     padding(size, sizeH) {
       if (sizeH) {
         this.styles.push(`padding:${size}px ${sizeH}px;`);

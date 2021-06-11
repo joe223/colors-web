@@ -148,14 +148,12 @@ export enum cssColors {
 }
 
 export interface Colors {
-  red: {
-    (o?: string): Colors;
-  };
-  white: (o?: string) => this;
-  green: (o?: string) => this;
+  red: ((o?: string) => this) & Colors;
+  white: ((o?: string) => this) & Colors;
+  green: ((o?: string) => this) & Colors;
   padding: (a: number, b?: number) => this;
-  redBg: (o?: string) => this;
-  greenBg: (o?: string) => this;
+  redBg: ((o?: string) => this) & Colors;
+  greenBg: ((o?: string) => this) & Colors;
   log: (o: string) => this;
 }
 export const colors: () => Colors;
