@@ -62,7 +62,7 @@
   },
   "license": "ISC",
   "main": "src/index.js",
-  "name": "chalk-web",
+  "name": "colors-web",
   "scripts": {
     "build": "npm run build:prod",
     "build:dev": "webpack --mode development --config ./webpack.config.js --progress --color --display-error-details",

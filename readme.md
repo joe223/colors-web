@@ -1,5 +1,18 @@
+## colors-web
+
+一个自由度非常高的，在浏览器的控制台（Console）显示彩色文本的库，您可用以下方式显示。
+目前还在开发更多功能中，有意见和想法请提 issues（格式无要求）
+
+### 安装
+
+```
+npm install colors-web --save
+```
+
+### 使用
+
 ```javascript
-import { logger, colors } from "chalk-web";
+import { logger, colors } from "colors-web";
 // 可使用 style name 直接串联定义样式，如：colors().red.greenBg
 logger(colors().red.greenBg.log("hello"), "world", colors().green("芋头"));
 // 也可以使用 style name 作为方法调用定义样式，如：colors().red().greenBg()
