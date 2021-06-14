@@ -314,4 +314,6 @@ export interface Colors extends ColorsBase {
 
 export const colors: () => Colors;
 
-export const logger: (...args: (Colors | string)[]) => void;
+export const logger: ((...args: (Colors | string)[]) => void) & {
+  source: any;
+};

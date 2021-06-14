@@ -6,6 +6,7 @@ const ColorsFactory = {
       if (o) this.o = o;
       return this;
     };
+    inst.type = "colors-web-instance";
     Object.assign(inst, {
       styles: [],
       o: "",

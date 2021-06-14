@@ -1,4 +1,7 @@
 import { logger, colors } from "../src/index.js";
+
+const log = window.console.log;
+logger.source = log;
 logger(
   colors().red.greenBg.log("hello"),
   "world",
