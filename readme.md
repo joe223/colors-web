@@ -53,6 +53,8 @@ colors-web 支持以下特性：
 
 ```javascript
 import { logger, colors } from "colors-web";
+// 可指定输出
+logger.source = console.log;
 /**
  * 使用属性的方式链式调用
  */
@@ -92,26 +94,32 @@ logger(
 
 ### 现实案例
 
-你可以使用颜色来区分不同的输出元素，例如，当你想实现一个用来分析渲染时间的模块时：
+你可以使用颜色来区分不同的输出元素，例如，当你想实现一个用来分析渲染时间的模块时（对全局 console 进行了 hack，不推荐这样用）：
 
-```
+```typescript
+import { logger, colors } from "colors-web";
 const origlog = console.log;
 let count = Date.now();
-console.log = function (obj, ...placeholders) {
+logger.source = origlog;
+console.log = function (obj: string, ...placeholders: string[]) {
   const now = Date.now();
-  if (typeof obj === "string") placeholders.unshift("%c " + (now - count) + "ms " + "%c " + obj);
-  else {
-    // This handles console.log( object )
-    placeholders.unshift(obj);
-    placeholders.unshift(now - count + "ms %j");
-  }
+  logger(
+    colors()
+      .white()
+      .padding(0, 3)
+      .blueBg(now - count + "ms"),
+    " ",
+    obj,
+    ...placeholders
+  );
   count = now;
-  placeholders.push("background:blue;color:#fff;display:block;width:80px;");
-  placeholders.push("background:white;color:#666;");
-  origlog.apply(this, placeholders);
+  //   logger.origlog.apply(this, placeholders);
 };
-
 ```
+
+效果：
+
+![](http://assets.html-js.com/2CB39991-A19E-41D8-A909-6DB66B838818.png)
 
 ### 开发
 
