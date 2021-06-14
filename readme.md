@@ -90,6 +90,29 @@ logger(
  */
 ```
 
+### 现实案例
+
+你可以使用颜色来区分不同的输出元素，例如，当你想实现一个用来分析渲染时间的模块时：
+
+```
+const origlog = console.log;
+let count = Date.now();
+console.log = function (obj, ...placeholders) {
+  const now = Date.now();
+  if (typeof obj === "string") placeholders.unshift("%c " + (now - count) + "ms " + "%c " + obj);
+  else {
+    // This handles console.log( object )
+    placeholders.unshift(obj);
+    placeholders.unshift(now - count + "ms %j");
+  }
+  count = now;
+  placeholders.push("background:blue;color:#fff;display:block;width:80px;");
+  placeholders.push("background:white;color:#666;");
+  origlog.apply(this, placeholders);
+};
+
+```
+
 ### 开发
 
 ```
