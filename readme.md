@@ -54,33 +54,40 @@ colors-web 支持以下特性：
 ```javascript
 import { logger, colors } from "colors-web";
 /**
- * 可使用 style name 直接串联定义样式，如：colors().red.greenBg
+ * 使用属性的方式链式调用
  */
-logger(colors().red.greenBg.log("hello"), "world", colors().green("芋头"));
+logger(
+  colors().red.greenBg.log("hello world"),
+  "hello world",
+  colors().green.log("芋头")
+);
 /**
- * 也可以使用 style name 作为方法调用定义样式，如：colors().red().greenBg()
+ * 直接用列表中的颜色做方法调用
  */
-logger(colors().red().greenBg().log("hello"), "world", colors().green("芋头"));
+logger(
+  colors().red().greenBg().log("hello world"),
+  "hello world",
+  colors().green("芋头")
+);
 /**
- * 可以在定义 style 的同时直接输出文本
+ * 自定义颜色和北京
  */
-logger(colors().red().greenBg("hello"), "world", colors().green("芋头"));
+logger(
+  colors().color("red").bg("lightgrey").log("hello world"),
+  "hello world",
+  colors().green("芋头")
+);
 /**
  * 除了颜色和背景色之外，支持其他 style，如 bold，italic，underline 等
  */
 logger(
-  colors().bold().italic().redBg("hello"),
-  "world",
+  colors().bold().redBg("hello"),
+  colors().bold().italic().redBg("word"),
   colors().white().padding(2, 5).underline().greenBg("芋头")
 );
 /**
  * 支持 140 个css标准样式名，同时支持自定义颜色: colors().color("#333").bg("#aaa")
  */
-logger(
-  colors().color("#333").bg("#aaa").redBg("hello"),
-  "world",
-  colors().white.padding(2, 5).greenBg("芋头")
-);
 ```
 
 ### 开发
