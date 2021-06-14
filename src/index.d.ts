@@ -151,10 +151,21 @@ export interface Colors {
   red: ((o?: string) => this) & Colors;
   white: ((o?: string) => this) & Colors;
   green: ((o?: string) => this) & Colors;
-  padding: (a: number, b?: number) => this;
   redBg: ((o?: string) => this) & Colors;
   greenBg: ((o?: string) => this) & Colors;
+  lightgrey: ((o?: string) => this) & Colors;
+  color: (color: string) => this;
+  bg: (color: string) => this;
+
   log: (o: string) => this;
+
+  padding: (a: number, b?: number) => this;
+  fontsize: (size: number) => this;
+  fontfamily: (family: string) => this;
+  underline: () => this;
+  linethrough: () => this;
+  italic: () => this;
+  bold: () => this;
 }
 export const colors: () => Colors;
 

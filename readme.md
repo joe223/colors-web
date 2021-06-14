@@ -31,6 +31,9 @@ colors-web 支持以下特性：
   - `colors().italic();`
   - `colors().padding(topbottom,rightleft);`
   - `colors().underline();`
+  - `colors().linethrough();`
+  - `colors().fontsize(size);`
+  - `colors().fontfamily(familyName);`
 - 其他特性
   - 何时传入需要显示的字符串？
     - 在任何一个链式调用的方法中传入都可以（以最后一个生效）

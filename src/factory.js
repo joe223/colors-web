@@ -25,6 +25,14 @@ const ColorsFactory = {
         this.styles.push(`background:${color};`);
         return this;
       },
+      fontsize(size) {
+        this.styles.push(`font-size:${size}px;`);
+        return this;
+      },
+      fontfamily(family) {
+        this.styles.push(`font-family:${family};`);
+        return this;
+      },
       padding(size, sizeH) {
         if (sizeH) {
           this.styles.push(`padding:${size}px ${sizeH}px;`);
@@ -39,7 +47,12 @@ const ColorsFactory = {
         return this;
       },
       underline(o) {
-        this.styles.push(`font-style:underline;`);
+        this.styles.push(`text-decoration:underline;`);
+        if (o) this.o = o;
+        return this;
+      },
+      linethrough(o) {
+        this.styles.push(`text-decoration:line-through;`);
         if (o) this.o = o;
         return this;
       },
